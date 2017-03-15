@@ -311,6 +311,18 @@
         };
 
         /**
+         * Emits ping to the server over the WebSocket connection.
+         */
+        this.ping = function() {
+            if (ws) {
+                if (self.debug || ReconnectingWebSocket.debugAll) {
+                    console.debug('ReconnectingWebSocket', 'ping', self.url, data);
+                }
+                return ws.ping();
+            }
+        };
+
+        /**
          * Closes the WebSocket connection or connection attempt, if any.
          * If the connection is already CLOSED, this method does nothing.
          */
